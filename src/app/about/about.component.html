@@ -1,21 +1,37 @@
-<h1>About me</h1>
-<ul>
-    <li>Name : {{info.name}}</li>
-    <li>Email: {{info.email}}</li>
-    <li>Tel: {{info.tel}}</li>
-</ul>
-<div>
-    <input type="text" name="comment" [(ngModel)]="comment.message">
-    <button [disabled]="newComment" (click)="addComment()">Add Comment</button>
-</div>
+<div class="card card-primary border-primary">
+    <div class="card-header bg-primary text-white">
+        About me!
+    </div>
+    <div class="card-body">
+        <ul>
+            <li>Name : {{info.name}}</li>
+            <li>Email: {{info.email}}</li>
+            <li>Tel: {{info.tel}}</li>
+        </ul>
+        <div class="form-group">
+            <label for="">Message</label>
+            <div class="input-group">
+                <input type="text" name="comment" class="form-control" [(ngModel)]="comment.message">
+                <button [disabled]="newComment" class="btn btn-primary" (click)="addComment()">
+                    Add Comment
+                </button>
+            </div>
 
-<div *ngIf="comments.length>0; else noComments">
-    <h1>Messages</h1>
-    <ul>
-        <li *ngFor="let comment of comments"> {{comment.message}} | {{comment.date | date}}</li>
-    </ul>
-</div>
+        </div>
 
-<ng-template #noComments>
-  <h3>No comment found!</h3>
-</ng-template>
+        <div *ngIf="comments.length>0; else noComments">
+            <h1>Messages</h1>
+            <ul class="list-group">
+                <li class="list-group-item border-primary d-flex justify-content-between align-items-center" 
+                    *ngFor="let comment of comments"> 
+                    {{comment.message}}  <span class="badge badge-secondary badge-pill">{{comment.date | date}}</span> 
+                </li>
+            </ul>
+        </div>
+
+        <ng-template #noComments>
+            <h3>No comment found!</h3>
+        </ng-template>
+    </div>
+
+</div>

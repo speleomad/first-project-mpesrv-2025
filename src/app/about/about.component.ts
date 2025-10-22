@@ -1,25 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AboutService } from '../services/about.service';
+import { Comment } from '../shared/comment';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent {
- info={
-     name: "Demo",
-     email: "demo@gmail.com",
-     tel: "88 8888 888"
-    }
- comments=[]
- comment={date:new Date(), message:"default message"}
- newComment:boolean=false
+export class AboutComponent implements OnInit {
 
- addComment(){
- console.log("New comment");
- this.comments.push({date:this.comment.date, message:this.comment.message})
+  info: any = {};
+  comments :Comment[] = []
+  comment: Comment = { id: 0, date: new Date(), message: "default message" };
+  newComment: boolean = false
+  constructor(private aboutService: AboutService) { }
+  ngOnInit(): void {
+    this.info = this.aboutService.getInfos();
+    this.comments = this.aboutService.getComments();
+  }
 
- //console.log("message="+this.comment.message)
- // this.newComment=true;
- }
+
+  addComment() {
+    console.log("New comment");
+    // this.comments.push({ date: this.comment.date, message: this.comment.message })
+    this.aboutService.addComment({
+      id: this.comments.length + 1,
+      date: this.comment.date,
+      message: this.comment.message
+    });
+    //console.log("message="+this.comment.message)
+    // this.newComment=true;
+  }
 }
