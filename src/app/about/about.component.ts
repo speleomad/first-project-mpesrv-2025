@@ -8,7 +8,7 @@ import { Comment } from '../shared/comment';
   styleUrl: './about.component.css'
 })
 export class AboutComponent implements OnInit {
-
+  colors={odd:"red",even:"green"}
   info: any = {};
   comments :Comment[] = []
   comment: Comment = { id: 0, date: new Date(), message: "default message" };

@@ -19,19 +19,6 @@
 
         </div>
 
-        <div *ngIf="comments.length>0; else noComments">
-            <h1>Messages</h1>
-            <ul class="list-group">
-                <li class="list-group-item border-primary d-flex justify-content-between align-items-center" 
-                    *ngFor="let comment of comments"> 
-                    {{comment.message}}  <span class="badge badge-secondary badge-pill">{{comment.date | date}}</span> 
-                </li>
-            </ul>
-        </div>
-
-        <ng-template #noComments>
-            <h3>No comment found!</h3>
-        </ng-template>
-    </div>
+      <app-comment [comments]="comments"></app-comment>
 
 </div>
