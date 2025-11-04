@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './contacts.component.css'
 })
 export class ContactsComponent {
+  constructor(private router:Router){}
 
+  goToAbout(){
+    this.router.navigateByUrl("/about");
+  }
 }
