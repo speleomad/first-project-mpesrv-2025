@@ -11,7 +11,17 @@ export class SigninComponent  implements OnInit{
     constructor(private authService:AuthService){}
 
   ngOnInit(): void {
-    this.isAuthenticated=this.authService.isAuthenticated;
+     this.isAuthenticated=this.authService.isAuthenticated();
   }
+
+  onSignin(){
+    this.authService.singIn();
+    this.isAuthenticated=this.authService.isAuthenticated();
+  }
+  onSignout(){
+    this.authService.singOut();
+     this.isAuthenticated=this.authService.isAuthenticated();
+  }
+
 
 }

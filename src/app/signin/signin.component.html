@@ -1,7 +1,7 @@
 
 <div class="mb-4">
-    <button class="btn btn-success" [disabled]="isAuthenticated">SignIn</button>
+    <button class="btn btn-success" (click)="onSignin()" [disabled]="isAuthenticated">SignIn</button>
 </div>
 <div>
-    <button class="btn btn-danger" [disabled]="!isAuthenticated">SignOut</button>
+    <button class="btn btn-danger" (click)="onSignout()" [disabled]="!isAuthenticated">SignOut</button>
 </div>

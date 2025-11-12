@@ -1,14 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ContactService } from '../services/contact.service';
+import { Contact } from '../shared/contact';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.css'
 })
-export class ContactsComponent {
-  constructor(private router:Router){}
-
+export class ContactsComponent implements OnInit {
+  contacts:Contact[]=[]
+  constructor(private router:Router,private contactService:ContactService){}
+  ngOnInit(): void {
+    this.contacts=this.contactService.getAllContact();
+  }
+   deleteContact(id:number){
+    this.contactService.deleteContactById(id);
+  }
   goToAbout(){
     this.router.navigateByUrl("/about");
   }
