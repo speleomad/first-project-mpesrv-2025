@@ -19,4 +19,8 @@ export class ContactService {
     if(index!=-1 )
     this.contacts.splice(index,1)
   }
+  addContact(contact:Contact){
+      contact.id=this.contacts[this.contacts.length-1].id+1;
+      this.contacts.push(contact);
+  }
 }

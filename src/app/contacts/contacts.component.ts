@@ -10,6 +10,7 @@ import { Contact } from '../shared/contact';
 })
 export class ContactsComponent implements OnInit {
   contacts:Contact[]=[]
+  contactDetailURL:any="/contacts/";
   constructor(private router:Router,private contactService:ContactService){}
   ngOnInit(): void {
     this.contacts=this.contactService.getAllContact();
@@ -19,5 +20,8 @@ export class ContactsComponent implements OnInit {
   }
   goToAbout(){
     this.router.navigateByUrl("/about");
+  }
+  onAddContact(){
+    this.router.navigateByUrl("/contacts/edit")
   }
 }
